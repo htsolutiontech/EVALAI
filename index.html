@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://api.web3forms.com https://api.crossref.org https://eutils.ncbi.nlm.nih.gov https://script.google.com https://script.googleusercontent.com; form-action 'self' mailto: https://formsubmit.co; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>EvalAIH — Kiểm chứng độ tin cậy AI y tế | Inno Health MedTech</title>
+<meta name="description" content="EvalAIH — lớp kiểm chứng độc lập độ tin cậy kết quả của các nền tảng AI y tế tại Việt Nam. Không dùng cho quyết định chẩn đoán y khoa.">
+<meta property="og:title" content="EvalAIH — Kiểm chứng độ tin cậy AI y tế">
+<meta property="og:description" content="Lớp kiểm chứng trung lập cho AI y tế Việt Nam: trách nhiệm · an toàn · tuân thủ · hiệu quả.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#06080F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A6EFF'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip" href="#app">Bỏ qua tới nội dung chính</a>
+
+<!-- ═══ LƯU Ý BẮT BUỘC ═══ -->
+<div id="disclaimerBar" role="note" aria-label="Lưu ý quan trọng">
+  <span class="dc-ico" aria-hidden="true">⚠</span>
+  <span><b>Lưu ý:</b> <span data-disclaimer></span></span>
+</div>
+
+<!-- ═══ TOPBAR ═══ -->
+<header id="topbar">
+  <a class="logo" href="#demo" aria-label="EvalAIH — trang chủ">
+    <div class="logo-mark" aria-hidden="true">E</div>
+    <div class="logo-name">Eval<em>AI</em>H</div>
+    <div class="logo-sep"></div>
+    <div class="logo-author">@BinhMinhAI</div>
+    <div class="logo-pill" id="verPill">MVP</div>
+  </a>
+
+  <div id="stepper" aria-label="Tiến trình demo">
+    <div class="stp-dot now" id="sd1">1</div><div class="stp-lbl now" id="sl1">Platform</div>
+    <div class="stp-bar" id="sb1"></div>
+    <div class="stp-dot" id="sd2">2</div><div class="stp-lbl" id="sl2">Tài liệu</div>
+    <div class="stp-bar" id="sb2"></div>
+    <div class="stp-dot" id="sd3">3</div><div class="stp-lbl" id="sl3">Scanning</div>
+    <div class="stp-bar" id="sb3"></div>
+    <div class="stp-dot" id="sd4">4</div><div class="stp-lbl" id="sl4">Kết quả</div>
+  </div>
+
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    <span class="live-txt" id="kbLiveTxt">KB Live</span>
+    <button class="btn-tiny" id="resetBtn" type="button">↺ Reset</button>
+  </div>
+</header>
+
+<nav id="mainnav" aria-label="Chức năng chính">
+  <a href="#demo" data-view="demo">Demo kiểm chứng</a>
+  <a href="#live" data-view="live">Đánh giá trực tiếp</a>
+  <a href="#agent" data-view="agent">Agent chuyên gia <span class="nav-cnt" id="navKbCnt">0</span></a>
+  <a href="#feedback" data-view="feedback">Góp ý &amp; đánh giá</a>
+  <a href="Pilottest.html" class="ext">Bàn kiểm chứng P0 ↗</a>
+</nav>
+
+<main id="app" tabindex="-1">
+
+<!-- ════════════════════ VIEW: DEMO ════════════════════ -->
+<section class="view" id="view-demo" aria-label="Demo kiểm chứng">
+
+<!-- SCREEN 1 -->
+<div class="screen on" id="s1">
+  <div class="intro fu">
+    <div class="step-badge"><span class="step-badge-dot" style="background:#7B6FFF"></span><span class="step-badge-txt">BƯỚC 01 / 04</span></div>
+    <h1 class="big-title">Chọn nền tảng AI<br><span class="hi">cần kiểm chứng</span></h1>
+    <p class="sub-text">EvalAI phân tích kết quả từ bất kỳ AI platform nào — hoàn toàn độc lập, không thiên vị với nhà cung cấp.</p>
+  </div>
+  <div class="plt-grid">
+    <div class="plt-card fu1" id="pc-claude" data-plt="claude" role="button" tabindex="0">
+      <div class="plt-ico" id="pi-claude" style="background:#160E00;border-color:#2A1E00;color:#F0A030">◆</div>
+      <div><div class="plt-nm">Claude Sonnet 4</div><div class="plt-vnd">Anthropic</div></div>
+    </div>
+    <div class="plt-card fu2" id="pc-gpt4o" data-plt="gpt4o" role="button" tabindex="0">
+      <div class="plt-ico" id="pi-gpt4o" style="background:#001A14;border-color:#002820;color:#1ED98A">⬡</div>
+      <div><div class="plt-nm">GPT-4o</div><div class="plt-vnd">OpenAI</div></div>
+    </div>
+    <div class="plt-card fu3" id="pc-gemini" data-plt="gemini" role="button" tabindex="0">
+      <div class="plt-ico" id="pi-gemini" style="background:#100826;border-color:#1E1040;color:#A78BFA">✦</div>
+      <div><div class="plt-nm">Gemini 1.5 Pro</div><div class="plt-vnd">Google</div></div>
+    </div>
+    <div class="plt-card fu4" id="pc-copilot" data-plt="copilot" role="button" tabindex="0">
+      <div class="plt-ico" id="pi-copilot" style="background:#001626;border-color:#002840;color:#38BDF8">◎</div>
+      <div><div class="plt-nm">Microsoft Copilot</div><div class="plt-vnd">Microsoft</div></div>
+    </div>
+  </div>
+  <div style="text-align:center">
+    <button class="btn-main" id="btn12" type="button" disabled>Tiếp tục — Chọn tài liệu →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="s2">
+  <div class="intro fu">
+    <div class="step-badge" id="s2badge"><span class="step-badge-dot" id="s2dot"></span><span class="step-badge-txt" id="s2lbl">BƯỚC 02 / 04</span></div>
+    <h1 class="big-title">Chọn tài liệu <span id="s2accent" class="hi">cần phân tích</span></h1>
+    <p class="sub-text">Upload file từ máy tính hoặc chọn tài liệu mẫu của dự án</p>
+  </div>
+  <div class="upload-box" id="upBox" role="button" tabindex="0" aria-label="Chọn file để tải lên">
+    <input type="file" id="fi" style="display:none" accept=".pdf,.docx,.pptx,.txt,.md">
+    <div id="upContent">
+      <div class="upload-ico">⬆</div>
+      <div class="upload-head">Kéo thả hoặc click để upload</div>
+      <div class="upload-hint">Hỗ trợ PDF · DOCX · PPTX · TXT · MD (tối đa 5 MB)</div>
+    </div>
+  </div>
+  <div class="divider-line"><span>HOẶC CHỌN TÀI LIỆU MẪU</span></div>
+  <div class="doc-list">
+    <div class="doc-row fu1" id="dr-ambient" data-doc="ambient" role="button" tabindex="0">
+      <div class="doc-ico" style="background:#0A1830">📋</div>
+      <div style="flex:1;min-width:0"><div class="doc-nm">Ambient Scribe — Business Plan Q1/2026</div><div class="doc-sz">47 KB · DOCX</div></div>
+      <span class="ftag" style="background:#0A1830;color:#60A5FA">DOCX</span>
+    </div>
+    <div class="doc-row fu2" id="dr-aios" data-doc="aios" role="button" tabindex="0">
+      <div class="doc-ico" style="background:#0A1830">🏗</div>
+      <div style="flex:1;min-width:0"><div class="doc-nm">AIOSHealth OS Framework — Thuyết minh v2</div><div class="doc-sz">91 KB · DOCX</div></div>
+      <span class="ftag" style="background:#0A1830;color:#60A5FA">DOCX</span>
+    </div>
+    <div class="doc-row fu3" id="dr-evalaih" data-doc="evalaih" role="button" tabindex="0">
+      <div class="doc-ico" style="background:#0A1830">🔬</div>
+      <div style="flex:1;min-width:0"><div class="doc-nm">EvalAIH Thuyết minh Giải pháp v2.0</div><div class="doc-sz">112 KB · DOCX</div></div>
+      <span class="ftag" style="background:#0A1830;color:#60A5FA">DOCX</span>
+    </div>
+    <div class="doc-row fu4" id="dr-investor" data-doc="investor" role="button" tabindex="0">
+      <div class="doc-ico" style="background:#0F0820">📊</div>
+      <div style="flex:1;min-width:0"><div class="doc-nm">Inno Health</div><div class="doc-sz">3.2 MB · PPTX</div></div>
+      <span class="ftag" style="background:#0F0820;color:#A78BFA">PPTX</span>
+    </div>
+    <div class="doc-row" id="dr-market" data-doc="market" role="button" tabindex="0">
+      <div class="doc-ico" style="background:#180808">📈</div>
+      <div style="flex:1;min-width:0"><div class="doc-nm">Digital Health VN Market Report 2025</div><div class="doc-sz">28 KB · PDF</div></div>
+      <span class="ftag" style="background:#180808;color:#F87171">PDF</span>
+    </div>
+  </div>
+  <div class="s2-btns" style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap">
+    <button class="btn-ghost" id="btnBack1" type="button">← Quay lại</button>
+    <button class="btn-main" id="btn23" type="button" disabled>🔬 Bắt đầu Phân tích EvalAIH</button>
+  </div>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen" id="s3">
+  <div style="text-align:center;padding:80px 0">
+    <div class="scan-orbit">
+      <div class="orbit-ring" id="or1"></div>
+      <div class="orbit-ring" id="or2"></div>
+      <div class="orbit-ring" id="or3"></div>
+      <div class="orbit-core">
+        <span class="scan-pct" id="sPct">0%</span>
+        <div class="scan-line" id="sLine"></div>
+      </div>
+    </div>
+    <h2 class="scan-ttl">EvalAIH đang phân tích…</h2>
+    <p class="scan-stg" id="sStg" aria-live="polite">Khởi tạo Knowledge Base Engine…</p>
+    <div class="prog-wrap">
+      <div class="prog-track"><div class="prog-fill" id="pFill" style="width:0"></div></div>
+    </div>
+    <div class="agents" id="agentsRow">
+      <div class="agent" id="ag0"><span class="agent-dot"></span>Factual Agent</div>
+      <div class="agent" id="ag1"><span class="agent-dot"></span>Clinical Agent</div>
+      <div class="agent" id="ag2"><span class="agent-dot"></span>Regulatory Agent</div>
+      <div class="agent" id="ag3"><span class="agent-dot"></span>Statistical Agent</div>
+      <div class="agent" id="ag4"><span class="agent-dot"></span>Source Agent</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4 -->
+<div class="screen" id="s4">
+  <div class="notice warn" id="demoNotice" role="note"></div>
+  <div class="result-top fu">
+    <div class="result-meta">
+      <div class="result-badge"><span class="step-badge-dot" id="rdot"></span><span class="step-badge-txt" id="rbadge">EVALAIH · @BinhMinhAI</span></div>
+      <div class="result-ttl">Báo cáo Kiểm chứng</div>
+      <div class="result-doc" id="rdoc">—</div>
+      <div class="stat-row" id="statRow"></div>
+    </div>
+    <div class="mpvs-card" id="mpvsCard">
+      <div>
+        <div class="mpvs-lbl">MPVS SCORE</div>
+        <div class="mpvs-ring">
+          <svg width="84" height="84" style="transform:rotate(-90deg)" aria-hidden="true">
+            <circle cx="42" cy="42" r="35" fill="none" stroke="#172236" stroke-width="7"/>
+            <circle id="mpvsArc" cx="42" cy="42" r="35" fill="none" stroke="#1ED98A" stroke-width="7"
+              stroke-dasharray="0 999" stroke-linecap="round" style="transition:stroke-dasharray 1.3s cubic-bezier(.4,0,.2,1)"/>
+          </svg>
+          <div class="mpvs-num" id="mpvsNum">—</div>
+        </div>
+        <div class="mpvs-badge" id="mpvsVerd">—</div>
+        <div class="mpvs-ecs" id="mpvsEcs">ECS —%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tb on" type="button" data-tab="claims">Claims <span class="tb-cnt" id="clCnt">0</span></button>
+    <button class="tb" type="button" data-tab="benchmark">Benchmark <span class="tb-cnt">10</span></button>
+    <button class="tb" type="button" data-tab="report">Report</button>
+  </div>
+
+  <div class="tab-pane on" id="tp-claims">
+    <div class="sum-cards" id="sumCards"></div>
+    <div id="clList"></div>
+  </div>
+
+  <div class="tab-pane" id="tp-benchmark">
+    <div style="margin-bottom:20px">
+      <h3 class="bm-h3">Benchmark AI — Quốc tế &amp; EvalAIH VN</h3>
+      <p style="font-size:14px;color:var(--t3);line-height:1.75">So sánh hiệu suất trên các bộ test chuẩn y tế quốc tế và benchmark chuyên biệt tiếng Việt của EvalAIH. Số liệu trong Demo mang tính minh họa.</p>
+    </div>
+    <div class="bm-legend" id="bmLegend"></div>
+    <div class="bm-sect-lbl"><span class="ftag" style="background:#091830;color:#4293FF">THANG ĐO QUỐC TẾ — PEER-REVIEWED (minh họa)</span></div>
+    <div class="bm-table-wrap"><div class="bm-table" id="bmIntl"></div></div>
+    <div style="margin:18px 0 8px"><span class="ftag" style="background:#141000;color:#F5B93A">⚠️ EVALAIH INTERNAL — CHƯA PEER-REVIEWED</span></div>
+    <div class="bm-table-wrap"><div class="bm-table" id="bmInternal"></div></div>
+    <div class="bm-note"><strong>⚠️ Disclaimer:</strong> Số liệu ⚠️ là kết quả nội bộ EvalAIH (~200 test cases Q4/2025), chưa peer-reviewed. <strong style="color:#F05050">KHÔNG</strong> dùng số liệu ⚠️ trong tài liệu pháp lý hoặc investor deck chưa qua validation độc lập.</div>
+  </div>
+
+  <div class="tab-pane" id="tp-report">
+    <div class="rpt-box">
+      <div class="rpt-hdr">
+        <div class="rpt-logo">
+          <div class="rpt-logo-ico">E</div>
+          <div><div class="rpt-logo-ttl">EvalAIH Verification Report</div><div class="rpt-logo-sub" id="rptSub">Inno Health MedTech · Confidential</div></div>
+        </div>
+        <div class="mpvs-badge" id="rptVerd" style="font-size:11px;padding:5px 14px">—</div>
+      </div>
+      <div class="rpt-body">
+        <div class="rpt-sect"><div class="rpt-sh">TÓM TẮT KẾT QUẢ</div><div class="rpt-grid" id="rptGrid"></div></div>
+        <div class="rpt-sect"><div class="rpt-sh">CHI TIẾT KIỂM CHỨNG</div><div id="rptClaims"></div></div>
+        <div class="meta-box"><div class="meta-hd">⚠️ META-EVALUATION — EVALAIH TỰ ĐÁNH GIÁ</div><div class="meta-txt" id="metaTxt">—</div></div>
+        <div class="notice warn"><b>Lưu ý:</b> <span data-disclaimer></span></div>
+        <div class="rpt-acts no-print">
+          <button class="btn-main" type="button" id="btnPdf" style="font-size:13px;padding:10px 22px">🖨 In / Lưu PDF</button>
+          <button class="btn-ghost" type="button" id="btnJson" style="font-size:13px">📋 Copy JSON</button>
+          <button class="btn-ghost" type="button" id="btnNew" style="font-size:13px">↺ Phân tích mới</button>
+        </div>
+      </div>
+      <div class="rpt-foot">EvalAIH · Inno Health MedTech © 2026 · Công cụ đánh giá độ tin cậy nền tảng AI — KHÔNG dùng cho quyết định chẩn đoán y khoa</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════ VIEW: LIVE ════════════════════ -->
+<section class="view" id="view-live" aria-labelledby="liveTtl" hidden>
+  <div class="intro fu">
+    <div class="step-badge"><span class="step-badge-dot" style="background:#1BBDB0"></span><span class="step-badge-txt">ĐÁNH GIÁ TRỰC TIẾP · MPVS-H</span></div>
+    <h1 class="big-title" id="liveTtl">Dán output AI,<br><span class="hi">kiểm chứng từng luận điểm</span></h1>
+    <p class="sub-text">Tra DOI qua CrossRef, PMID qua PubMed, đối chiếu văn bản pháp lý và áp dụng ngay quy tắc từ Kho tri thức chuyên gia. Khi chuyên gia thêm tri thức mới, kết quả đang mở được đánh giá lại tự động.</p>
+  </div>
+
+  <form class="panel" id="liveForm" novalidate>
+    <div class="grid3">
+      <div class="field"><label for="lvPlatform">Nền tảng AI</label>
+        <select id="lvPlatform" required>
+          <option value="">— chọn —</option><option>Claude (Anthropic)</option><option>ChatGPT / GPT (OpenAI)</option><option>Gemini (Google)</option>
+          <option>Copilot (Microsoft)</option><option>Vendor AI Việt Nam</option><option>Mô hình nội bộ bệnh viện</option><option>Khác</option>
+        </select></div>
+      <div class="field"><label for="lvModel">Mô hình &amp; phiên bản</label><input id="lvModel" type="text" maxlength="80" placeholder="VD: tên model, ngày truy cập"></div>
+      <div class="field"><label for="lvFile">Nạp từ file (.txt, .md)</label><input id="lvFile" type="file" accept=".txt,.md,text/plain"></div>
+    </div>
+    <div class="field"><label for="lvPrompt">Câu hỏi / prompt đã gửi cho AI <span class="opt">(tùy chọn — để so với câu trả lời chuẩn của chuyên gia)</span></label>
+      <textarea id="lvPrompt" rows="2" maxlength="2000"></textarea></div>
+    <div class="field"><label for="lvText">Output của nền tảng AI <span class="req">*</span></label>
+      <textarea id="lvText" rows="9" maxlength="30000" required placeholder="Dán nguyên văn kết quả AI cần đánh giá. Không dán thông tin định danh người bệnh."></textarea>
+      <div class="hint"><span id="lvCount">0</span>/30.000 ký tự</div></div>
+    <div class="notice err" id="lvPii" hidden></div>
+    <div class="actions">
+      <button class="btn-main" type="submit" id="lvRun">🔬 Đánh giá</button>
+      <button class="btn-ghost" type="button" id="lvSample">Nạp ví dụ</button>
+      <button class="btn-ghost" type="button" id="lvClear">Xóa</button>
+      <span class="hint" id="lvStatus" aria-live="polite"></span>
+    </div>
+  </form>
+
+  <div id="lvResult" hidden></div>
+</section>
+
+<!-- ════════════════════ VIEW: AGENT ════════════════════ -->
+<section class="view" id="view-agent" aria-labelledby="agTtl" hidden>
+  <div class="intro fu">
+    <div class="step-badge"><span class="step-badge-dot" style="background:#F5B93A"></span><span class="step-badge-txt">AGENT EVALAI · KHO TRI THỨC CHUYÊN GIA</span></div>
+    <h1 class="big-title" id="agTtl">Tri thức lâm sàng của bác sĩ<br><span class="hi">trở thành chuẩn đánh giá AI</span></h1>
+    <p class="sub-text">Bác sĩ và chuyên gia từng chuyên khoa đóng góp hiệu chỉnh, quy tắc liều, câu trả lời chuẩn và cờ đỏ. Mỗi đóng góp được áp dụng ngay vào bộ đánh giá, và chỉ có trọng số đầy đủ khi đủ chuyên gia độc lập đồng thuận.</p>
+  </div>
+
+  <ol class="pipeline" aria-label="Quy trình tri thức">
+    <li><b>1. Thu nhận</b><span>Chuyên gia nhập theo mẫu có cấu trúc</span></li>
+    <li><b>2. Khử định danh</b><span>Tự động chặn dữ liệu người bệnh</span></li>
+    <li><b>3. Đồng thuận chéo</b><span>≥ <span id="quorumN">2</span> chuyên gia độc lập</span></li>
+    <li><b>4. Áp dụng tức thì</b><span>Bộ đánh giá dùng ngay, có trọng số</span></li>
+    <li><b>5. Đồng bộ</b><span>Email / webhook về Inno Health</span></li>
+    <li><b>6. Huấn luyện</b><span>Xuất JSONL cho mô hình đánh giá</span></li>
+  </ol>
+
+  <div class="ag-grid">
+    <!-- Hồ sơ chuyên gia -->
+    <form class="panel" id="profForm" novalidate>
+      <h2 class="ph">Hồ sơ chuyên gia</h2>
+      <p class="hint" id="profState">Hoàn tất hồ sơ để bắt đầu đóng góp.</p>
+      <div class="field"><label for="pfName">Họ và tên <span class="req">*</span></label><input id="pfName" required maxlength="80" autocomplete="name"></div>
+      <div class="grid2">
+        <div class="field"><label for="pfTitle">Học hàm / chức danh</label><input id="pfTitle" maxlength="60" placeholder="BSCKII, ThS.BS, DS…"></div>
+        <div class="field"><label for="pfYears">Số năm kinh nghiệm</label><input id="pfYears" type="number" min="0" max="60"></div>
+      </div>
+      <div class="field"><label for="pfSpec">Chuyên khoa <span class="req">*</span></label><select id="pfSpec" required></select></div>
+      <div class="field"><label for="pfOrg">Cơ sở công tác <span class="req">*</span></label><input id="pfOrg" required maxlength="120" autocomplete="organization"></div>
+      <div class="grid2">
+        <div class="field"><label for="pfEmail">Email <span class="req">*</span></label><input id="pfEmail" type="email" required maxlength="120" autocomplete="email"></div>
+        <div class="field"><label for="pfLicense">Số CCHN <span class="opt">(để xác minh)</span></label><input id="pfLicense" maxlength="30"></div>
+      </div>
+      <div class="field"><label for="pfCoi">Khai báo xung đột lợi ích</label><input id="pfCoi" maxlength="200" placeholder="VD: không có / tư vấn cho công ty X"></div>
+      <label class="check"><input type="checkbox" id="pfConsent" required> Tôi đồng ý Inno Health xử lý thông tin hồ sơ này để xác minh chuyên môn và ghi nhận đóng góp, theo Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15.</label>
+      <button class="btn-main" type="submit">Lưu hồ sơ</button>
+    </form>
+
+    <!-- Đóng góp -->
+    <form class="panel" id="contribForm" novalidate>
+      <h2 class="ph">Đóng góp tri thức</h2>
+      <div class="seg" role="radiogroup" aria-label="Loại đóng góp" id="kindSeg"></div>
+      <div class="grid2">
+        <div class="field"><label for="ctSpec">Chuyên khoa áp dụng <span class="req">*</span></label><select id="ctSpec" required></select></div>
+        <div class="field"><label for="ctConf">Mức tự tin của chuyên gia</label>
+          <select id="ctConf"><option value="5">5 — Rất chắc chắn</option><option value="4" selected>4 — Chắc chắn</option><option value="3">3 — Tương đối</option><option value="2">2 — Thấp</option></select></div>
+      </div>
+      <div id="kindFields"></div>
+      <fieldset class="fs">
+        <legend>Bằng chứng</legend>
+        <div class="grid2">
+          <div class="field"><label for="evSource">Nguồn <span class="req">*</span></label><input id="evSource" required maxlength="200" placeholder="Phác đồ BYT, guideline, nhãn thuốc, bài báo…"></div>
+          <div class="field"><label for="evRef">DOI / PMID / số hiệu / URL</label><input id="evRef" maxlength="200"></div>
+        </div>
+        <div class="field"><label for="evLevel">Mức bằng chứng</label>
+          <select id="evLevel"><option>Hướng dẫn BYT / văn bản pháp lý</option><option>Guideline quốc tế</option><option>Tổng quan hệ thống / phân tích gộp</option><option>Thử nghiệm ngẫu nhiên có đối chứng</option><option>Nghiên cứu quan sát</option><option>Nhãn thuốc / Dược thư</option><option>Ý kiến chuyên gia</option></select></div>
+        <div class="field"><label for="ctKeywords">Từ khóa để so khớp <span class="opt">(phân tách bằng dấu phẩy)</span></label><input id="ctKeywords" maxlength="200"></div>
+      </fieldset>
+      <div class="notice err" id="ctPii" hidden></div>
+      <label class="check"><input type="checkbox" id="ctDeid" required> Nội dung đã khử định danh, không chứa thông tin cá nhân người bệnh.</label>
+      <label class="check"><input type="checkbox" id="ctConsent" required> Tôi đồng ý chia sẻ đóng góp này cho Inno Health để kiểm chứng và huấn luyện EvalAIH.</label>
+      <div class="actions">
+        <button class="btn-main" type="submit" id="ctSubmit">Gửi đóng góp</button>
+        <span class="hint" id="ctStatus" aria-live="polite"></span>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bảng điều khiển KB -->
+  <div class="panel" id="kbPanel">
+    <div class="kb-head">
+      <h2 class="ph">Kho tri thức chuyên gia</h2>
+      <div class="actions">
+        <button class="btn-ghost sm" type="button" id="kbSync">⟳ Đồng bộ mục chưa gửi</button>
+        <button class="btn-ghost sm" type="button" id="kbExport">⬇ JSON</button>
+        <button class="btn-ghost sm" type="button" id="kbExportL">⬇ JSONL huấn luyện</button>
+        <label class="btn-ghost sm file-btn">⬆ Nhập gói JSON<input type="file" id="kbImport" accept=".json,application/json" hidden></label>
+        <button class="btn-ghost sm" type="button" id="kbVerify">🔒 Kiểm tra chuỗi băm</button>
+      </div>
+    </div>
+    <div class="kb-stats" id="kbStats"></div>
+    <div class="grid4 kb-filter">
+      <input id="kbQ" type="search" placeholder="Tìm trong kho…" aria-label="Tìm kiếm">
+      <select id="kbFKind" aria-label="Lọc loại"><option value="">Mọi loại</option></select>
+      <select id="kbFSpec" aria-label="Lọc chuyên khoa"><option value="">Mọi chuyên khoa</option></select>
+      <select id="kbFStatus" aria-label="Lọc trạng thái"><option value="">Mọi trạng thái</option><option value="pending">Chờ đồng thuận</option><option value="validated">Đã đồng thuận</option><option value="disputed">Tranh chấp</option><option value="seed">Mẫu</option></select>
+    </div>
+    <div id="kbList"></div>
+    <p class="hint">Kho được lưu trên trình duyệt này và gửi về <span data-email></span> qua email (kèm <code>payload_json</code> để nhập lại). Đồng thuận giữa nhiều chuyên gia trên nhiều thiết bị được gộp bằng chức năng “Nhập gói JSON” cho tới khi có máy chủ trung tâm.</p>
+  </div>
+</section>
+
+<!-- ════════════════════ VIEW: FEEDBACK ════════════════════ -->
+<section class="view" id="view-feedback" aria-labelledby="fbTtl" hidden>
+  <div class="intro fu">
+    <div class="step-badge"><span class="step-badge-dot" style="background:#E8459E"></span><span class="step-badge-txt">GÓP Ý &amp; ĐÁNH GIÁ</span></div>
+    <h1 class="big-title" id="fbTtl">Ý kiến của bạn<br><span class="hi">định hình EvalAIH</span></h1>
+    <p class="sub-text">Dành cho lãnh đạo bệnh viện, bác sĩ, nhà cung cấp AI, nhà đầu tư, cơ quan quản lý, chương trình đổi mới sáng tạo và người dân. Góp ý được chuyển trực tiếp tới đội ngũ Inno Health.</p>
+  </div>
+
+  <form class="panel" id="fbForm" novalidate>
+    <input type="text" name="_honey" id="fbHoney" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="grid2">
+      <div class="field"><label for="fbName">Họ và tên <span class="req">*</span></label><input id="fbName" required maxlength="80" autocomplete="name"></div>
+      <div class="field"><label for="fbEmail">Email <span class="req">*</span></label><input id="fbEmail" type="email" required maxlength="120" autocomplete="email"></div>
+      <div class="field"><label for="fbPhone">Điện thoại</label><input id="fbPhone" type="tel" maxlength="20" autocomplete="tel" pattern="[0-9+ ().-]{8,20}"></div>
+      <div class="field"><label for="fbOrg">Tổ chức / đơn vị</label><input id="fbOrg" maxlength="120" autocomplete="organization"></div>
+      <div class="field"><label for="fbRole">Vai trò <span class="req">*</span></label>
+        <select id="fbRole" required><option value="">— chọn —</option><option>Giám đốc / lãnh đạo bệnh viện</option><option>Bác sĩ / chuyên gia lâm sàng</option><option>Dược sĩ / điều dưỡng</option><option>Phòng CNTT / chuyển đổi số bệnh viện</option><option>Nhà cung cấp giải pháp AI</option><option>Quỹ / nhà đầu tư</option><option>Cơ quan quản lý nhà nước</option><option>Chương trình đổi mới sáng tạo</option><option>Nhà nghiên cứu / học thuật</option><option>Người bệnh / người nhà / người dân</option><option>Khác</option></select></div>
+      <div class="field"><label for="fbTopic">Chủ đề <span class="req">*</span></label>
+        <select id="fbTopic" required><option value="">— chọn —</option><option>Góp ý sản phẩm</option><option>Đăng ký pilot tại đơn vị</option><option>Quan tâm đầu tư</option><option>Hợp tác dữ liệu / chuyên gia</option><option>Chứng nhận nền tảng AI</option><option>Báo lỗi / sai sót kết quả</option><option>Khác</option></select></div>
+    </div>
+
+    <fieldset class="fs">
+      <legend>Đánh giá (1 = thấp, 5 = cao)</legend>
+      <div class="ratings" id="fbRatings"></div>
+      <div class="field"><label>Khả năng bạn giới thiệu EvalAIH cho đồng nghiệp (0–10)</label>
+        <div class="nps" id="fbNps" role="radiogroup" aria-label="Điểm giới thiệu 0 đến 10"></div></div>
+    </fieldset>
+
+    <div class="field"><label for="fbMsg">Nội dung góp ý <span class="req">*</span></label>
+      <textarea id="fbMsg" rows="6" required minlength="20" maxlength="4000" placeholder="Điều gì hữu ích, điều gì cần cải thiện, nhu cầu tại đơn vị của bạn…"></textarea>
+      <div class="hint"><span id="fbCount">0</span>/4.000 ký tự · tối thiểu 20</div></div>
+    <div class="notice err" id="fbPii" hidden></div>
+    <label class="check"><input type="checkbox" id="fbContact"> Tôi muốn được HealthV liên hệ trao đổi thêm.</label>
+    <label class="check"><input type="checkbox" id="fbConsent" required> Tôi đồng ý Inno Health xử lý thông tin trong form này để phản hồi góp ý, theo Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15. Không gửi thông tin bệnh án hay dữ liệu người bệnh. <span class="req">*</span></label>
+    <div class="notice warn"><b>Lưu ý:</b> <span data-disclaimer></span></div>
+    <div class="actions">
+      <button class="btn-main" type="submit" id="fbSubmit">Gửi góp ý</button>
+      <span class="hint" id="fbStatus" aria-live="polite"></span>
+    </div>
+  </form>
+  <div id="fbDone" hidden></div>
+  <div class="panel" id="fbHistory" hidden></div>
+</section>
+
+</main>
+
+<footer id="footer">
+  <div class="ft-inner">
+    <div class="ft-dc"><b>⚠ Lưu ý quan trọng:</b> <span data-disclaimer></span><br><i data-disclaimer-en></i></div>
+    <div class="ft-row">
+      <span>EvalAIH <span id="ftVer"></span> · Inno Health </span>
+      <span>Liên hệ: <a data-email-link></a></span>
+      <span>Tham chiếu: Luật 134/2025/QH15 · Luật 91/2025/QH15 · HL7 FHIR R4 · WHO AI for Health (2021, 2024)</span>
+    </div>
+    <div class="ft-row"><span id="outboxInfo"></span></div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/mailer.js"></script>
+<script src="assets/js/kb.js"></script>
+<script src="assets/js/engine.js"></script>
+<script src="assets/js/demo.js"></script>
+<script src="assets/js/live.js"></script>
+<script src="assets/js/agent.js"></script>
+<script src="assets/js/feedback.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
